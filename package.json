@@ -1,0 +1,10 @@
+{
+  "name": "floodlens-demo-workspace",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix floodlens run dev --",
+    "build": "npm --prefix floodlens run build",
+    "lint": "npm --prefix floodlens run lint",
+    "preview": "npm --prefix floodlens run preview"
+  }
+}

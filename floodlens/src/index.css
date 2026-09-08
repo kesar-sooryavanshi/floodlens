@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@theme {
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-sans: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Ink — deep slate, not pure black */
+  --color-ink-950: #0d1420;
+  --color-ink-900: #121b29;
+  --color-ink-800: #1a2536;
+  --color-ink-700: #24334a;
+  --color-ink-600: #33465f;
+  --color-ink-500: #4a5f7a;
+  --color-ink-400: #71879e;
+  --color-ink-300: #a3b3c4;
+
+  /* Paper — warm cream surfaces */
+  --color-paper-50: #fbfaf6;
+  --color-paper-100: #f5f2ea;
+  --color-paper-200: #ece6d8;
+  --color-paper-300: #ddd4bf;
+
+  /* Channel — the water/brand accent, a deep working teal */
+  --color-channel-900: #093a3e;
+  --color-channel-700: #0f6367;
+  --color-channel-600: #167f82;
+  --color-channel-500: #1f9a97;
+  --color-channel-400: #4db8b0;
+  --color-channel-300: #8ad4c9;
+  --color-channel-100: #e2f3ee;
+
+  /* Risk semantics — muted, not neon */
+  --color-risk-clear: #2f8f5b;
+  --color-risk-clear-soft: #e4f3ea;
+  --color-risk-caution: #c98a2c;
+  --color-risk-caution-soft: #f8ecd7;
+  --color-risk-severe: #b3402f;
+  --color-risk-severe-soft: #f6e2de;
+
+  --shadow-panel: 0 1px 2px rgba(13, 20, 32, 0.06), 0 12px 32px -12px rgba(13, 20, 32, 0.25);
+  --shadow-float: 0 2px 6px rgba(13, 20, 32, 0.12), 0 8px 24px -8px rgba(13, 20, 32, 0.2);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-paper-100);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-channel-300);
+  color: var(--color-ink-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-channel-600);
+  outline-offset: 2px;
+}
+
+.maplibregl-ctrl-attrib {
+  font-family: var(--font-sans);
+  font-size: 11px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.locate-pulse::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-channel-500);
+  animation: pulse-ring 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid rgba(13, 20, 32, 0.12);
+  border-radius: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.875rem;
+  color: var(--color-ink-900);
+  background: var(--color-paper-50);
+  transition: border-color 0.15s ease;
+}
+.input:focus {
+  border-color: var(--color-channel-500);
+  outline: none;
+}
